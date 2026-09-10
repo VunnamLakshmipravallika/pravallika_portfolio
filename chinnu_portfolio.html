@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshmi Pravallika Vunnam — AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1F2E2A;
+    --bg-raised:#26372F;
+    --ink:#F1EFE7;
+    --ink-dim:#C9C4B4;
+    --gold:#E3B23C;
+    --teal:#4E7C74;
+    --rule:#3A4A41;
+    --coral:#D8654F;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.mono-label,nav,.btn,.tag{
+    font-family:'Space Grotesk', sans-serif;
+  }
+
+  a{color:inherit;}
+
+  ::selection{background:var(--gold);color:var(--bg);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---- Notebook shell ---- */
+  .page{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    max-width:1100px;
+    margin:0 auto;
+    min-height:100vh;
+  }
+
+  .margin-rail{
+    position:relative;
+    border-right:1px solid var(--rule);
+  }
+
+  .margin-rail::before{
+    content:"";
+    position:absolute;
+    top:0; bottom:0; left:22px;
+    width:1px;
+    background:repeating-linear-gradient(
+      to bottom,
+      var(--rule) 0,
+      var(--rule) 1px,
+      transparent 1px,
+      transparent 48px
+    );
+  }
+
+  .hole{
+    position:absolute;
+    left:14px;
+    width:16px;height:16px;
+    border-radius:50%;
+    background:var(--bg);
+    border:1px solid var(--rule);
+  }
+
+  .content{
+    padding:0 32px 100px 40px;
+  }
+
+  section{
+    padding:76px 0;
+    border-bottom:1px solid var(--rule);
+    max-width:640px;
+  }
+
+  section:last-of-type{border-bottom:none;}
+
+  .mono-label{
+    display:inline-block;
+    font-size:13px;
+    color:var(--teal);
+    letter-spacing:0.02em;
+    margin-bottom:14px;
+    font-weight:500;
+  }
+
+  /* ---- Nav ---- */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:10;
+    display:flex;
+    gap:28px;
+    padding:22px 32px 22px 40px;
+    background:linear-gradient(var(--bg) 80%, transparent);
+    font-size:14px;
+  }
+
+  nav a{
+    color:var(--ink-dim);
+    text-decoration:none;
+    padding-bottom:4px;
+    border-bottom:1px solid transparent;
+    transition:color 0.2s, border-color 0.2s;
+  }
+
+  nav a:hover, nav a:focus-visible{
+    color:var(--gold);
+    border-color:var(--gold);
+  }
+
+  /* ---- Hero ---- */
+  .hero{
+    padding-top:56px;
+    border-bottom:1px solid var(--rule);
+    max-width:720px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    font-weight:600;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    opacity:0;
+    transform:translateY(14px);
+    animation:rise 0.7s ease-out 0.15s forwards;
+  }
+
+  .hero .role{
+    margin-top:18px;
+    font-size:1.25rem;
+    color:var(--teal);
+    font-family:'Space Grotesk', sans-serif;
+    opacity:0;
+    transform:translateY(14px);
+    animation:rise 0.7s ease-out 0.32s forwards;
+  }
+
+  .hero p.summary{
+    margin-top:26px;
+    max-width:56ch;
+    color:var(--ink-dim);
+    opacity:0;
+    transform:translateY(14px);
+    animation:rise 0.7s ease-out 0.48s forwards;
+  }
+
+  .hero .contacts{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:14px;
+    opacity:0;
+    transform:translateY(14px);
+    animation:rise 0.7s ease-out 0.62s forwards;
+  }
+
+  .hero .contacts a{
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--gold);
+    padding-bottom:2px;
+  }
+
+  @keyframes rise{
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ---- Section headings ---- */
+  h2{
+    font-size:1.7rem;
+    font-weight:600;
+    margin-bottom:28px;
+    letter-spacing:-0.01em;
+  }
+
+  /* ---- Skills ---- */
+  .skill-group{margin-bottom:22px;}
+  .skill-group h3{
+    font-size:0.95rem;
+    color:var(--gold);
+    font-weight:500;
+    margin-bottom:10px;
+  }
+  .skill-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tag{
+    font-size:13px;
+    padding:5px 12px;
+    border:1px solid var(--rule);
+    border-radius:2px;
+    color:var(--ink-dim);
+  }
+
+  /* ---- Projects ---- */
+  .project{
+    margin-bottom:52px;
+  }
+  .project:last-child{margin-bottom:0;}
+
+  .project-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .project h3{
+    font-size:1.25rem;
+    font-weight:600;
+  }
+
+  .project .when{
+    font-size:13px;
+    color:var(--teal);
+    white-space:nowrap;
+  }
+
+  .project .stack{
+    margin-top:6px;
+    font-size:13px;
+    color:var(--gold);
+    font-family:'Space Grotesk', sans-serif;
+  }
+
+  .project ul{
+    margin-top:14px;
+    padding-left:20px;
+    color:var(--ink-dim);
+  }
+
+  .project li{margin-bottom:8px;}
+  .project li::marker{color:var(--coral);}
+
+  /* ---- Certifications ---- */
+  .cert{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    padding:16px 0;
+    border-top:1px solid var(--rule);
+    flex-wrap:wrap;
+  }
+  .cert:last-child{border-bottom:1px solid var(--rule);}
+  .cert-name{font-weight:500; font-family:'Space Grotesk', sans-serif;}
+  .cert-org{color:var(--ink-dim); font-size:14px;}
+  .cert-date{color:var(--teal); font-size:14px; white-space:nowrap;}
+
+  /* ---- Education ---- */
+  .edu{
+    padding:18px 0;
+    border-top:1px solid var(--rule);
+  }
+  .edu:last-child{border-bottom:1px solid var(--rule);}
+  .edu-top{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .edu-school{font-weight:600; font-family:'Space Grotesk', sans-serif;}
+  .edu-years{color:var(--teal); font-size:14px;}
+  .edu-detail{color:var(--ink-dim); font-size:15px; margin-top:4px;}
+
+  /* ---- Contact / footer ---- */
+  .contact-block{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-top:24px;
+  }
+  .contact-row{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:15px;
+  }
+  .contact-row .k{color:var(--teal); min-width:96px;}
+  .contact-row a{text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:2px;}
+  .contact-row a:hover{border-color:var(--gold); color:var(--gold);}
+
+  footer{
+    padding:32px 0 60px;
+    color:var(--ink-dim);
+    font-size:13px;
+    font-family:'Space Grotesk', sans-serif;
+  }
+
+  @media (max-width:640px){
+    .page{grid-template-columns:32px 1fr;}
+    .margin-rail::before{left:15px;}
+    .hole{left:9px; width:10px; height:10px;}
+    .content{padding:0 20px 80px 22px;}
+    nav{padding:18px 20px 18px 22px; gap:18px; flex-wrap:wrap;}
+    section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="margin-rail" id="rail"></div>
+
+  <div class="content">
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section class="hero" id="top">
+      <h1>Lakshmi Pravallika Vunnam</h1>
+      <div class="role">AI/ML Engineer &amp; GenAI Builder</div>
+      <p class="summary">B.Tech Computer Science (AI &amp; ML) undergraduate at KKR &amp; KSR Institute of Technology and Sciences. I build working AI systems — multilingual chatbots, computer vision pipelines, predictive ML models — and I like shipping things that actually run, not just diagrams of them.</p>
+      <div class="contacts">
+        <a href="mailto:vunnamlakshmipravallika@gmail.com">Email</a>
+        <a href="https://linkedin.com/in/lakshmi-pravallika-vunnam-594762292" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/VunnamLakshmipravallika" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <span class="mono-label">// about</span>
+      <h2>What I'm working on</h2>
+      <p style="color:var(--ink-dim)">I'm actively pursuing AI/ML and front-end development roles, and I learn best by building — this year that's meant a GenAI healthcare chatbot, a drug toxicity prediction pipeline, and an AI-powered placement prep tool built entirely from scratch. I'm currently a Front End Development Intern at She Can Foundation, and I'm designing a safety-focused travel app called TripTravel on the side.</p>
+    </section>
+
+    <section id="skills">
+      <span class="mono-label">// skills</span>
+      <h2>Technical skills</h2>
+
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">Java</span><span class="tag">SQL</span>
+          <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>AI / ML &amp; Data Science</h3>
+        <div class="skill-tags">
+          <span class="tag">Machine Learning</span><span class="tag">Generative AI</span>
+          <span class="tag">LLMs</span><span class="tag">Deep Learning</span>
+          <span class="tag">CNN</span><span class="tag">NLP</span><span class="tag">Computer Vision</span>
+          <span class="tag">Scikit-learn</span><span class="tag">XGBoost</span>
+          <span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">OpenCV</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>GenAI tools &amp; APIs</h3>
+        <div class="skill-tags">
+          <span class="tag">GPT-4o</span><span class="tag">Gemini API</span>
+          <span class="tag">Whisper API</span><span class="tag">Text-to-Speech API</span>
+          <span class="tag">n8n</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Tools &amp; foundations</h3>
+        <div class="skill-tags">
+          <span class="tag">Git</span><span class="tag">VS Code</span><span class="tag">MySQL</span>
+          <span class="tag">OOP</span><span class="tag">DSA</span>
+          <span class="tag">Operating Systems</span><span class="tag">Computer Networks</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <span class="mono-label">// projects</span>
+      <h2>Selected work</h2>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>AI HealthTrust Network</h3>
+          <span class="when">Jul 2025</span>
+        </div>
+        <div class="stack">Python · GPT-4o · Whisper API · n8n</div>
+        <ul>
+          <li>Final project for the NxtWave GenAI Buildathon, tackling unsafe self-medication, counterfeit medicines, and weak predictive healthcare access across India.</li>
+          <li>Built a multilingual (Hindi, Telugu, Tamil) voice/text chatbot on GPT-4o and Whisper that turns spoken symptoms into personalized, ICMR/WHO-aligned advice.</li>
+          <li>Designed an AI Business Brain dashboard predicting pharmacy medicine demand from local query and sales patterns, to prevent stock-outs during outbreaks.</li>
+          <li>Led the live n8n workflow: real-time patient input, GPT-4o inference, and automatic logging to Google Sheets.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>PrepMate — AI Placement Prep Chatbot</h3>
+          <span class="when">2026</span>
+        </div>
+        <div class="stack">HTML · CSS · JavaScript · Gemini API</div>
+        <ul>
+          <li>Built a functional AI-powered chatbot from scratch to help students prep for campus placements — coding, aptitude, and core CS questions.</li>
+          <li>Integrated the Gemini API directly with plain HTML/CSS/JS, no frameworks, to keep the project lean and fully understandable end to end.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>GenAI-Based E-Commerce Chatbot</h3>
+          <span class="when">2025</span>
+        </div>
+        <div class="stack">Python · LLM · SQL</div>
+        <ul>
+          <li>Designed a conversational chatbot handling product discovery, order tracking, FAQs, and personalized recommendations.</li>
+          <li>Connected a SQL backend for real-time catalog, inventory, and order data, keeping responses context-aware and accurate.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>AI-Based Drug Toxicity Prediction</h3>
+          <span class="when">2026</span>
+        </div>
+        <div class="stack">Python · CNN · XGBoost · Pandas · NumPy · Scikit-learn</div>
+        <ul>
+          <li>Built an ML pipeline predicting drug toxicity from molecular descriptors and chemical compound data.</li>
+          <li>Combined CNNs for feature extraction with XGBoost for classification, improving predictive accuracy over either method alone.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <span class="mono-label">// certifications</span>
+      <h2>Certifications &amp; awards</h2>
+
+      <div class="cert">
+        <div>
+          <div class="cert-name">GenAI Buildathon — Completion Certificate</div>
+          <div class="cert-org">NxtWave, OpenAI Academy Learning Community</div>
+        </div>
+        <div class="cert-date">Jul 2025</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name">Build Your Own Responsive Website</div>
+          <div class="cert-org">CCBP 4.0 Academy, NxtWave · Bootstrap, Flexbox</div>
+        </div>
+        <div class="cert-date">Aug 2025</div>
+      </div>
+    </section>
+
+    <section id="education">
+      <span class="mono-label">// education</span>
+      <h2>Education</h2>
+
+      <div class="edu">
+        <div class="edu-top">
+          <div class="edu-school">KKR &amp; KSR Institute of Technology and Sciences</div>
+          <div class="edu-years">2023 – 2027</div>
+        </div>
+        <div class="edu-detail">B.Tech, Computer Science and Engineering (AI &amp; ML) · CGPA 7.89/10</div>
+      </div>
+      <div class="edu">
+        <div class="edu-top">
+          <div class="edu-school">Tirumala Oxford Junior College</div>
+          <div class="edu-years">2021 – 2023</div>
+        </div>
+        <div class="edu-detail">Board of Intermediate Education, Class XII · 658 marks</div>
+      </div>
+      <div class="edu">
+        <div class="edu-top">
+          <div class="edu-school">Geethanjali High School</div>
+          <div class="edu-years">Graduated 2021</div>
+        </div>
+        <div class="edu-detail">Board of Secondary Education, Class X · GPA 10/10</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <span class="mono-label">// contact</span>
+      <h2>Get in touch</h2>
+      <p style="color:var(--ink-dim)">Open to AI/ML and front-end internship or placement opportunities.</p>
+      <div class="contact-block">
+        <div class="contact-row"><span class="k">Email</span><a href="mailto:vunnamlakshmipravallika@gmail.com">vunnamlakshmipravallika@gmail.com</a></div>
+        <div class="contact-row"><span class="k">Phone</span><span>+91-9063931516</span></div>
+        <div class="contact-row"><span class="k">LinkedIn</span><a href="https://linkedin.com/in/lakshmi-pravallika-vunnam-594762292" target="_blank" rel="noopener">lakshmi-pravallika-vunnam</a></div>
+        <div class="contact-row"><span class="k">GitHub</span><a href="https://github.com/VunnamLakshmipravallika" target="_blank" rel="noopener">VunnamLakshmipravallika</a></div>
+      </div>
+    </section>
+
+    <footer>Built by Pravallika · Guntur, India</footer>
+  </div>
+</div>
+
+<script>
+  // fill the notebook margin with hole-punch marks spaced to the section rhythm
+  const rail = document.getElementById('rail');
+  const railHeight = document.body.scrollHeight;
+  const spacing = 96;
+  const count = Math.ceil(railHeight / spacing);
+  for(let i=0;i<count;i++){
+    const hole = document.createElement('div');
+    hole.className = 'hole';
+    hole.style.top = (40 + i*spacing) + 'px';
+    rail.appendChild(hole);
+  }
+
+  window.addEventListener('resize', () => {
+    rail.innerHTML = '';
+    const h = document.body.scrollHeight;
+    const c = Math.ceil(h / spacing);
+    for(let i=0;i<c;i++){
+      const hole = document.createElement('div');
+      hole.className = 'hole';
+      hole.style.top = (40 + i*spacing) + 'px';
+      rail.appendChild(hole);
+    }
+  });
+</script>
+
+</body>
+</html>
